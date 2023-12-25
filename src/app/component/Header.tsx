@@ -28,7 +28,7 @@ export default function Header() {
     <>
       <nav className="sticky top-0 px-4 py-4 flex justify-between items-center bg-white border-b-main border-b z-10">
         {/* <Logo /> */}
-        <a href="" className="text-2xl lg:ps-10">Rochelle's Graduate Life</a>
+        <a href="#" className="text-2xl lg:ps-10">Rochelle&apos;s Graduate Life</a>
         <div className="lg:hidden">
           <button
             className="navbar-burger flex items-center text-main p-3"
