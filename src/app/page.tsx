@@ -8,7 +8,7 @@ function PostCard(post: Post) {
   return (
     <div className="mb-8">
       <h2 className="mb-1 text-xl">
-        <Link href={post.url} className="text-blue-700 hover:text-blue-900 dark:text-blue-400">
+        <Link href={post.url} className="text-gray-700 hover:text-gray-900 dark:text-gray-400">
           {post.title}
         </Link>
       </h2>
@@ -16,7 +16,7 @@ function PostCard(post: Post) {
         {format(parseISO(post.date), 'LLLL d, yyyy')}
       </time>
       {/* <div className="text-sm [&>*]:mb-3 [&>*:last-child]:mb-0" dangerouslySetInnerHTML={{ __html: post.body.html }} /> */}
-      <div>great</div>
+      <div>{post.description}</div>
     </div>
   )
 }

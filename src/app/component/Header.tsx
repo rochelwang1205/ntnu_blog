@@ -28,7 +28,7 @@ export default function Header() {
     <>
       <nav className="sticky top-0 px-4 py-4 flex justify-between items-center bg-white border-b-main border-b z-10">
         {/* <Logo /> */}
-        <a href="#" className="text-2xl lg:ps-10">Rochelle&apos;s Graduate Life</a>
+        <a href="/" className="text-2xl lg:ps-10">Rochelle&apos;s Graduate Life</a>
         <div className="lg:hidden">
           <button
             className="navbar-burger flex items-center text-main p-3"
@@ -46,7 +46,7 @@ export default function Header() {
         </div>
         <ul className="hidden absolute top-1/2 right-[5%] transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
           {navLinks.map((link) => (
-            <li key={link.title}>
+            <li key={link.title} className="list-none">
               <a
                 className="text-sm text-gray-400 hover:text-gray-500"
                 href={link.path}
