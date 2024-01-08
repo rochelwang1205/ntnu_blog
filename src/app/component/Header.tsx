@@ -85,9 +85,9 @@ export default function Header() {
           <div>
             <ul>
               {navLinks.map((link) => (
-                <li className="mb-1" key={link.title}>
+                <li className="mb-1 list-none" key={link.title}>
                   <a
-                    className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-main rounded"
+                    className="block p-4 text-sm font-semibold text-gray-900 hover:bg-violet-100 hover:text-main rounded"
                     href={link.path}
                   >
                     {link.title}

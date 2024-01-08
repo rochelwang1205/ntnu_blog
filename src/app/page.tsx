@@ -6,9 +6,9 @@ import { allPosts, Post } from 'contentlayer/generated'
 function PostCard(post: Post) {
   // const MDXContent = useMDXComponent(post.body.code)
   return (
-    <div className="mb-8">
+    <div className="m-8">
       <h2 className="mb-1 text-xl">
-        <Link href={post.url} className="text-gray-700 hover:text-gray-900 dark:text-gray-400">
+        <Link href={post.url} className="text-gray-900 hover:text-gray-400 dark:text-gray-400 font-bold">
           {post.title}
         </Link>
       </h2>
