@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 // import Logo from "./Logo";
+import Image from 'next/image';
 export default function Header() {
   const [open, setOpen] = useState(false);
 
@@ -26,9 +27,16 @@ export default function Header() {
 
   return (
     <>
-      <nav className="sticky top-0 px-4 py-4 flex justify-between items-center bg-white border-b-main border-b z-10">
+      <nav className="sticky top-0 px-4 flex justify-between items-center bg-white z-10">
         {/* <Logo /> */}
-        <a href="/" className="text-2xl lg:ps-10">Rochelle&apos;s Graduate Life</a>
+        <a href="/" className="text-2xl lg:ps-10">
+          <Image
+            priority
+            src="/images/Rochelle-Blog_logo-black.png"
+            height={200}
+            width={200}
+            alt="Rochelle-Blog_logo"/>
+        </a>
         <div className="lg:hidden">
           <button
             className="navbar-burger flex items-center text-main p-3"

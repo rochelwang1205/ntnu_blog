@@ -24,8 +24,8 @@ export default function RootLayout({
             {/* <ThemeSwitch /> */}
           <Header/>
           {children}
-          </main>
           <Footer/>
+          </main>
         </body>
     </html>
   )
