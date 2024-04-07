@@ -3,16 +3,27 @@ import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 // import Logo from "./Logo";
 import Image from 'next/image';
+import ThemeSwitch from 'src/app/component/ThemeSwitch'
+import { useIsClient } from 'usehooks-ts';
+
+
+
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const isClient = useIsClient();
 
   useEffect(() => {
-    if (open) {
+    if (open && isClient) { 
       document.body.classList.add("overflow-hidden");
     } else {
       document.body.classList.remove("overflow-hidden");
     }
-  }, [open]);
+  }, [open, isClient]);
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
 
   const navLinks = [
     {
@@ -24,19 +35,23 @@ export default function Header() {
         path: "/about",
       },
   ];
+  const ThemedLogo: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => (
+    <a href="/" className="text-2xl lg:ps-10">
+      <Image
+        priority
+        src={`/images/Rochelle-Blog_logo-${theme === 'light' ? 'black' : 'white'}.png`}
+        height={200}
+        width={200}
+        alt="Rochelle-Blog_logo"
+      />
+    </a>
+  );
 
   return (
     <>
-      <nav className="sticky top-0 px-4 flex justify-between items-center bg-white z-10">
+      <nav className="sticky top-0 px-4 flex justify-between items-center bg-opacity z-10">
         {/* <Logo /> */}
-        <a href="/" className="text-2xl lg:ps-10">
-          <Image
-            priority
-            src="/images/Rochelle-Blog_logo-black.png"
-            height={200}
-            width={200}
-            alt="Rochelle-Blog_logo"/>
-        </a>
+        <ThemedLogo theme={theme} />
         <div className="lg:hidden">
           <button
             className="navbar-burger flex items-center text-main p-3"
@@ -63,6 +78,7 @@ export default function Header() {
               </a>
             </li>
           ))}
+          <ThemeSwitch {...toggleTheme}/>
         </ul>
       </nav>
       <div className={clsx("navbar-menu relative z-50", !open && "hidden")}>
@@ -91,7 +107,9 @@ export default function Header() {
             </button>
           </div>
           <div>
-            <ul>
+            <ul className="justify-center">
+              <div className="p-4"></div>
+              <ThemeSwitch {...toggleTheme}/>
               {navLinks.map((link) => (
                 <li className="mb-1 list-none" key={link.title}>
                   <a
