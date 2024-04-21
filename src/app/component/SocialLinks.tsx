@@ -41,7 +41,7 @@ export default function SocialLinks() {
           key={link.title}
           href={link.path}
           target="_blank"
-          className="text-link text-xs hover:text-gray-400 flex items-center justify-center gap-1"
+          className="text-link text-xs text-black hover:text-gray-400 flex items-center justify-center gap-1"
         >
           <span className="h-6 w-6 ">{link.icon}</span>
           <span>{link.title}</span>

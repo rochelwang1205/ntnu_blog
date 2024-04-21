@@ -39,7 +39,7 @@ export default function Header() {
     <a href="/" className="text-2xl lg:ps-10">
       <Image
         priority
-        src={`/images/Rochelle-Blog_logo-${theme === 'light' ? 'black' : 'white'}.png`}
+        src={`/images/Rochelle-Blog_logo-${theme === 'light' ? 'white' : 'black'}.png`}
         height={200}
         width={200}
         alt="Rochelle-Blog_logo"
@@ -78,7 +78,7 @@ export default function Header() {
               </a>
             </li>
           ))}
-          <ThemeSwitch {...toggleTheme}/>
+          <ThemeSwitch onChange={toggleTheme}/>
         </ul>
       </nav>
       <div className={clsx("navbar-menu relative z-50", !open && "hidden")}>
@@ -109,7 +109,7 @@ export default function Header() {
           <div>
             <ul className="justify-center">
               <div className="p-4"></div>
-              <ThemeSwitch {...toggleTheme}/>
+              <ThemeSwitch onChange={toggleTheme}/>
               {navLinks.map((link) => (
                 <li className="mb-1 list-none" key={link.title}>
                   <a

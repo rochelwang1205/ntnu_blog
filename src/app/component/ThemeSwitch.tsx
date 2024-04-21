@@ -9,20 +9,20 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-function ThemeSwitch() {
-  const [theme, setTheme] = useLocalStorage('theme', 'light')
+function ThemeSwitch({ onChange }: { onChange: (enabled: boolean) => void }) {
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
+  const [enabled, setEnabled] = useState(theme === 'light');
 
   useEffect(() => {
-    document.body.classList.remove('light', 'dark')
-    document.body.classList.add(theme)
-  }, [theme])
-
-  const [enabled, setEnabled] = useState(theme == 'light')
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(theme);
+  }, [theme]);
 
   const handleThemeChange = (enabled: boolean) => {
-    setTheme(enabled ? 'light' : 'dark')
-    setEnabled(enabled)
-  }
+    setTheme(enabled ? 'light' : 'dark');
+    setEnabled(enabled);
+    onChange(enabled);
+  };
 
   return (
     <Switch
