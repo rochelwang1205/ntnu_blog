@@ -1,25 +1,14 @@
-"use client";
+"use client"
 import React, { useEffect, useState } from "react";
 import clsx from "clsx";
-// import Logo from "./Logo";
 import Image from 'next/image';
 import ThemeSwitch from 'src/app/component/ThemeSwitch'
 import { useIsClient } from 'usehooks-ts';
 
-
-
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  const isClient = useIsClient();
-
-  useEffect(() => {
-    if (open && isClient) { 
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-  }, [open, isClient]);
+  const [logoColor, setLogoColor] = useState<'black' | 'white'>('black');
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -31,27 +20,48 @@ export default function Header() {
       path: "/",
     },
     {
-        title: "關於",
-        path: "/about",
-      },
+      title: "關於",
+      path: "/about",
+    },
   ];
-  const ThemedLogo: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => (
-    <a href="/" className="text-2xl lg:ps-10">
-      <Image
-        priority
-        src={`/images/Rochelle-Blog_logo-${theme === 'light' ? 'white' : 'black'}.png`}
-        height={200}
-        width={200}
-        alt="Rochelle-Blog_logo"
-      />
-    </a>
-  );
+
+  useEffect(() => {
+    // 设置初始 logo 颜色为黑色
+    setLogoColor('black');
+  
+    const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    if (darkModeMediaQuery.matches) {
+      setTheme('dark');
+    }
+  
+    const handleChange = (e: MediaQueryListEvent) => {
+      setTheme(e.matches ? 'dark' : 'light');
+    };
+  
+    darkModeMediaQuery.addEventListener('change', handleChange);
+  
+    return () => {
+      darkModeMediaQuery.removeEventListener('change', handleChange);
+    };
+  }, []);
+  
+
+  useEffect(() => {
+    setLogoColor(theme === 'light' ? 'white' : 'black'); // 在主题切换时更新 logo 颜色
+  }, [theme]);
 
   return (
     <>
       <nav className="sticky top-0 px-4 flex justify-between items-center bg-opacity z-10">
-        {/* <Logo /> */}
-        <ThemedLogo theme={theme} />
+        <a href="/" className="text-2xl lg:ps-10">
+          <Image
+            priority
+            src={`/images/Rochelle-Blog_logo-${logoColor}.png`}
+            height={200}
+            width={200}
+            alt="Rochelle-Blog_logo"
+          />
+        </a>
         <div className="lg:hidden">
           <button
             className="navbar-burger flex items-center text-main p-3"
@@ -88,23 +98,15 @@ export default function Header() {
         />
         <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
           <div className="flex items-center mb-8">
-            {/* <Logo /> */}
-            <button className="navbar-close" onClick={() => setOpen(!open)}>
-              <svg
-                className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
+            <a href="/" className="text-2xl lg:ps-10">
+              <Image
+                priority
+                src={`/images/Rochelle-Blog_logo-${logoColor}.png`}
+                height={200}
+                width={200}
+                alt="Rochelle-Blog_logo"
+              />
+            </a>
           </div>
           <div>
             <ul className="justify-center">
