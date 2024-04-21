@@ -26,8 +26,6 @@ export default function Header() {
   ];
 
   useEffect(() => {
-    // 设置初始 logo 颜色为黑色
-    setLogoColor('black');
   
     const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     if (darkModeMediaQuery.matches) {
