@@ -25,6 +25,7 @@ export default function AuthorLayout({ children }: Props) {
           </ul>
           <h2 className="mb-8 font-black">專案里程碑😎</h2>
           <ul className="ms-4 leading-8">
+            <li>2026/6/7: 部落格告一段落!!👋🏻</li>
             <li>2024/03/01: Logo來了!!!</li>
             <li>2023/12/25: 部落格上線</li>
           </ul>
