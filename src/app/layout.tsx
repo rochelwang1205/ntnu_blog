@@ -3,8 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from "./component/Header";
 import Footer from "./component/Footer";
-import ThemeSwitch from 'src/app/component/ThemeSwitch'
-import { useTheme } from 'next-themes';
+import { Providers } from './providers';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,15 +19,18 @@ export default function RootLayout({
 }) {
   
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <main className="bg-white text-black dark:bg-black dark:text-white">
-          {/* <ThemeSwitch/> */}
-          <Header/>
-          {children}
-          <Footer/>
-          </main>
-        </body>
+    <html lang="zh-TW" suppressHydrationWarning>
+      <body className={`${inter.className} bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-200`}>
+        <Providers>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </Providers>
+      </body>
     </html>
   )
 }
