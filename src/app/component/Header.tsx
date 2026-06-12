@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <>
       {/* 加上背景色 transition 與 補上透明背景、高斯模糊的現代 UI 樣式 */}
-      <nav className="sticky top-0 px-4 py-3 flex justify-between items-center bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-900 transition-colors duration-200 z-50">
+      <nav className="sticky top-0 px-4 flex justify-between items-center bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-900 transition-colors duration-200 z-50">
         <Link href="/" className="text-2xl lg:ps-10">
           <Image
             priority
@@ -85,15 +85,6 @@ export default function Header() {
         />
         <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800 overflow-y-auto transition-colors duration-200">
           <div className="flex items-center justify-between mb-8">
-            <Link href="/" onClick={() => setOpen(false)}>
-              <Image
-                priority
-                src={`/images/Rochelle-Blog_logo-${logoColor}.png`}
-                height={40}
-                width={150}
-                alt="Rochelle-Blog_logo"
-              />
-            </Link>
             {/* 手機選單關閉鈕 */}
             <button className="text-gray-500" onClick={() => setOpen(false)}>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

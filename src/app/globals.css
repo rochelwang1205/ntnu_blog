@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html {
+  scroll-behavior: smooth;
+}
 *{
     user-select:none; /* standard syntax */
     -webkit-user-select:none; /* for Chrome、Safari */
