@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import { compareDesc, format, parseISO } from 'date-fns'
-import { allPosts, Post } from 'contentlayer/generated'
+import { allPosts, Post } from 'contentlayer/generated';
+import { compareDesc, format, parseISO } from 'date-fns';
+import Link from 'next/link';
 
 const POSTS_PER_PAGE = 6;
 
@@ -15,7 +15,7 @@ function PostCard(post: Post) {
       <time dateTime={post.date} className="mb-3 block text-xs text-gray-500 dark:text-gray-400">
         {format(parseISO(post.date), 'LLLL d, yyyy')}
       </time>
-      <div className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3">{post.description}</div>
+      <div className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3">{post.description || "點擊閱讀更多..." }</div>
     </div>
   )
 }
